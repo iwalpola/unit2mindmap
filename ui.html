@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photoelectric Effect Mind Map</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link href="https://unpkg.com/vis-network/dist/vis-network.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="network" style="width: 1000px; height: 700px; border: 1px solid lightgray;"></div>
+    
+    <script type="text/javascript">
+        // JavaScript code goes here
+    </script>
+</body>
+<script>
+	var nodes = new vis.DataSet([
+		{id: 1, label: 'Photoelectric Effect', title: 'The emission of electrons from a material when light shines on it, demonstrating the particle nature of light.'},
+		{id: 2, label: 'Threshold Frequency', title: 'The minimum frequency of light required to eject electrons from a material, highlighting the energy aspect of light particles.'},
+		{id: 3, label: 'Instantaneous Emission', title: 'The immediate release of electrons upon light exposure, indicating that energy is transferred in packets (photons).'},
+		{id: 4, label: 'Kinetic Energy of Emitted Electrons', title: 'The energy of electrons emitted, which increases with the frequency of incident light, supporting the photon theory of light.'},
+		{id: 5, label: 'Saturation Current', title: 'The maximum current observed at high light intensity, corresponding to all possible electrons being emitted.'},
+		// Add more nodes for Wave Theory Failure, Particle Theory Success, etc.
+	]);
+
+	var edges = new vis.DataSet([
+		{from: 1, to: 2},
+		{from: 1, to: 3},
+		{from: 1, to: 4},
+		{from: 1, to: 5},
+		// Add more edges to connect observations to their explanations
+	]);
+	// Continuing from the previous nodes and edges definition...
+
+	nodes.add([
+		{id: 6, label: 'Waves'},
+		{id: 7, label: 'Reflection', title: 'When a wave bounces back after hitting a barrier'},
+		{id: 8, label: 'Refraction', title: 'The bending of a wave as it passes from one medium to another'},
+		{id: 9, label: 'Diffraction', title: 'The spreading of waves around obstacles or through openings'},
+		{id: 10, label: 'Superposition', title: 'When two or more waves overlap, their displacements add'},
+		{id: 11, label: 'Polarization', title: 'A wave property in which the vibrations occur in a single plane parallel to the direction of travel'},
+		// Subtopics for Polarization
+		{id: 12, label: 'Unpolarized Light', title: 'Light whose waves vibrate in more than one plane parallel to the direction of travel'},
+		{id: 13, label: 'Polarized Light', title: 'Light waves that vibrate in only one plane parallel to the direction of travel'},
+	]);
+
+	edges.add([
+		{from: 6, to: 7},
+		{from: 6, to: 8},
+		{from: 6, to: 9},
+		{from: 6, to: 10},
+		{from: 6, to: 11},
+		// Connecting subtopics of Polarization
+		{from: 11, to: 12},
+		{from: 11, to: 13},
+	]);
+	
+	// Adding to the existing nodes and edges...
+
+	nodes.add([
+		// Enhanced detail for Reflection
+		{id: 14, label: 'Reason for Reflection', title: 'Occurs due to sudden changes in density that cause the wave to bounce back'},
+		
+		// Expanded details for Refraction
+		{id: 15, label: 'Reason for Refraction', title: 'Occurs due to a change in speed as light passes from one medium to another'},
+		{id: 16, label: 'Refractive Index (n)', title: 'Defined as n = c/v, a measure of the speed of light in a medium relative to the speed in a vacuum'},
+		{id: 17, label: 'Total Internal Reflection', title: 'Occurs when light attempts to move from a denser to a less dense medium at an angle greater than the critical angle, resulting in light being reflected entirely back into the denser medium'},
+		{id: 18, label: 'Conditions for Total Internal Reflection', title: '1. Light must travel from a denser to a less dense medium.\n2. Incidence angle must be greater than the critical angle.'},
+		{id: 19, label: "Snell's Law", title: 'n1*sin(theta1) = n2*sin(theta2), relating the angles and indices of refraction of two different media'},
+	]);
+
+	edges.add([
+		{from: 7, to: 14}, // Connect Reason for Reflection to Reflection
+		{from: 8, to: 15}, // Connect Reason for Refraction to Refraction
+		{from: 8, to: 16}, // Connect Refractive Index to Refraction
+		{from: 8, to: 17}, // Connect Total Internal Reflection to Refraction
+		{from: 17, to: 18}, // Connect Conditions for Total Internal Reflection to Total Internal Reflection
+		{from: 8, to: 19}, // Connect Snell's Law to Refraction
+	]);
+	
+	nodes.add([
+		{id: 20, label: 'Wave Theory', title: 'Energy accumulates continuously over time, implying shared energy among multiple particles and dependence on intensity.', color: 'lightcoral'},
+		{id: 21, label: 'Continuous Energy Accumulation', title: 'Energy builds up over time, shared by multiple particles.', color: 'lightcoral'},
+		{id: 22, label: 'Energy Dependent on Intensity', title: 'In wave theory, energy is dependent on the intensity of the wave.', color: 'lightcoral'},
+
+		{id: 23, label: 'Particle Theory', title: 'Energy accumulates in discrete packets instantaneously, with each photon interacting with a single electron and energy dependence on frequency.', color: 'lightcoral'},
+		{id: 24, label: 'Discrete Energy Accumulation', title: 'Energy builds up instantaneously, with one photon interacting with one electron.', color: 'lightcoral'},
+		{id: 25, label: 'Energy Dependent on Frequency', title: 'In particle theory, energy is dependent on the frequency of the photons.', color: 'lightcoral'},
+	]);
+
+	edges.add([
+		{from: 1, to: 20},
+		{from: 20, to: 21},
+		{from: 20, to: 22},
+		{from: 1, to: 23},
+		{from: 23, to: 24},
+		{from: 23, to: 25},
+	]);
+
+
+	var container = document.getElementById('network');
+	var data = {
+		nodes: nodes,
+		edges: edges
+	};
+	var options = {}; // Customize your network options here
+	var network = new vis.Network(container, data, options);
+</script
+</html>
